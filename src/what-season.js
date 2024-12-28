@@ -14,9 +14,11 @@ const { NotImplementedError } = require('../extensions/index.js');
 function getSeason(date = 'empty') {
   if (date === 'empty') {
     return 'Unable to determine the time of year!';
+  } else if (date.toString() === new Date().toString()) {
+    throw new Error("Invalid date!")
   } else if (typeof (date).valueOf() !== 'number' && typeof (date) !== 'object' || typeof (date).valueOf() === 'object' && typeof (date) === 'object' || typeof (date).valueOf() === 'number' && typeof (date) !== 'object') {
-    return "Invalid date!";
-  }
+    throw new Error("Invalid date!")
+  } 
   let dateMonth = date.toUTCString().split(' ')[2];
   if (dateMonth === 'Dec' || dateMonth === 'Jan' || dateMonth === 'Feb') {
     return 'winter';
