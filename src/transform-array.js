@@ -36,7 +36,7 @@ function transform(arr = 'empty') {
       i = 0;
       result = arr;
     } else if (arr[i] === '--discard-prev') {
-      arr.splice(i - 1, 2);
+      arr.splice(i - 1, 2, ' ');
       i = 0;
       result = arr;
     } else if (arr[i] === '--double-prev') {
@@ -44,9 +44,17 @@ function transform(arr = 'empty') {
       i = 0;
       result = arr;
     } else if (arr[i] === '--discard-next') {
-      arr.splice(i, 2);
+      arr.splice(i, 2, ' ');
       i = 0;
       result = arr;
+    }
+  }
+  if (result.includes(' ') === true) {
+    for (let x = 0; x < result.length; x += 1) {
+      if (result[x] === ' ') {
+        result.splice(x, 1);
+        x = 0;
+      }
     }
   }
   return result;
