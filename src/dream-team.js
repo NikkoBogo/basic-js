@@ -17,8 +17,8 @@ function createDreamTeam(members) {
   if (Array.isArray(members) === false) {
     return false;
   }
-  let filtredMembers = members.filter(item => typeof item === 'string');
-  let preparedMembers = filtredMembers.map(item => item.trim().toUpperCase());
+  let filteredMembers = members.filter(item => typeof item === 'string');
+  let preparedMembers = filteredMembers.map(item => item.trim().toUpperCase());
   return preparedMembers.map(item => item[0]).sort().join('');
 }
 
